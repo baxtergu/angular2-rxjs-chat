@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy,Input } from '@angular/core';
 import { ThreadsService } from '../../services/services.service';
 import { Observable } from 'rxjs';
 import { Thread } from '../../models/models';
@@ -23,7 +23,6 @@ export class ChatThreadsComponent implements OnInit {
 }
 
 @Component({
-  inputs: ['thread'],
   selector: 'app-chat-thread',
   template: `
   <div class="media conversation">
@@ -42,7 +41,7 @@ export class ChatThreadsComponent implements OnInit {
   `
 })
 export class ChatThreadComponent implements OnInit {
-  thread: Thread;
+  @Input() thread: Thread;
   selected: boolean = false;
 
   constructor(private threadsService: ThreadsService) {
